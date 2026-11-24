@@ -1,1 +1,365 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ChannelAtlas | Blair Page</title><link rel="icon" href="assets/mark.svg"><link rel="stylesheet" href="style.css"></head><body><header><a class="brand" href="#top"><img src="assets/mark.svg" alt="">ChannelAtlas</a><nav><a href="#strategy">Strategy</a><a href="#model">Simulator</a><a href="#report">PDF viewer</a></nav></header><main id="top"><section class="hero"><div><small>CHANNELATLAS / BY BLAIR PAGE</small><h1>Connect channels.<br><em>Measure outcomes.</em></h1><p>Multichannel advertising and performance intelligence for a fictional home energy audit service.</p><a class="btn" href="#model">Explore the model</a></div><img src="assets/hero.svg" alt="Three channels converging on a shared outcome"></section><section id="strategy"><small>01 / STRATEGY</small><h2>From discovery to completed service</h2><div class="grid"><article><h3>Campaign mandate</h3><p>Build demand for a fictional home energy audit service.</p><p>Convert qualified appointment requests into completed audits.</p><p>Measure incremental contribution rather than platform-attributed revenue.</p></article><article><h3>Audience architecture</h3><p>Prospecting: homeowners researching energy efficiency.</p><p>Retargeting: visitors who explored audit eligibility.</p><p>Search: people actively seeking local energy assessments.</p></article><article><h3>Measurement contract</h3><p>Track qualified bookings, completed audits and contribution.</p><p>Deduplicate bookings using a first-party appointment ID.</p><p>Exclude cancelled appointments from completed-audit counts.</p></article><article><h3>Baseline performance</h3><p>Illustrative spend: $12,000 across three channels.</p><p>Completed audits: 160; contribution per audit: $110.</p><p>Contribution after media: $5,600 before fixed overhead.</p></article><article><h3>Efficiency diagnostics</h3><p>Cost per qualified booking = spend / qualified bookings.</p><p>Completion rate = completed audits / qualified bookings.</p><p>Net media contribution = completed audits × unit contribution − spend.</p></article><article><h3>Creative diagnosis</h3><p>Video: explain what happens during an audit.</p><p>Search: match service intent and location.</p><p>Retargeting: address scheduling and eligibility concerns.</p></article><article><h3>Experiment design</h3><p>Randomize eligible users into mutually exclusive groups.</p><p>Compare educational video with a short service walkthrough.</p><p>Primary outcome: completed audits per eligible user.</p></article><article><h3>Retargeting test</h3><p>Use a randomized holdout to estimate incremental bookings.</p><p>Cap frequency and suppress existing appointments.</p><p>Assess incremental contribution after media cost.</p></article><article><h3>Cross-channel test</h3><p>Compare search-only against search plus educational video.</p><p>Keep geography and service availability comparable.</p><p>Use first-party outcomes rather than summed platform conversions.</p></article><article><h3>Budget architecture</h3><p>Reserve funding for high-intent search, discovery and retargeting.</p><p>Hold a separate experimental reserve.</p><p>Reallocate only after completion and contribution evidence matures.</p></article><article><h3>Forecast model</h3><p>Model bookings using channel-specific acquisition costs.</p><p>Apply completion probability and available technician capacity.</p><p>Stress-test costs, demand and contribution before scaling.</p></article><article><h3>Campaign configuration</h3><p>Search: service keywords, local radius, booking landing page.</p><p>Video: educational audiences, frequency limit, eligibility page.</p><p>Display: consented site visitors, booking exclusions, capped exposure.</p></article><article><h3>Creative concept / Search</h3><p>Headline: Understand your home energy use.</p><p>Description: Explore an independent home efficiency assessment.</p><p>CTA: Check appointment availability.</p></article><article><h3>Creative concept / Video</h3><p>Opening: A thermal scan reveals an unseen draft.</p><p>Middle: Technician explains the audit process.</p><p>Closing: Discover your next efficiency step.</p></article><article><h3>Creative concept / Display</h3><p>Headline: Ready to explore your home efficiency?</p><p>Visual: stylized house with thermal contour lines.</p><p>CTA: Explore available appointments.</p></article><article><h3>Optimization protocol</h3><p>Review booking quality and completed-audit cost weekly.</p><p>Pause misleading creative or capacity-constrained locations.</p><p>Increase spend gradually when marginal contribution remains positive.</p></article><article><h3>Experiment governance</h3><p>Pre-register primary outcome, duration and stopping rules.</p><p>Estimate sample size from baseline conversion and minimum effect.</p><p>Report uncertainty, exclusions and negative results.</p></article><article><h3>Executive decision</h3><p>Pilot the integrated mix before expanding geographically.</p><p>Scale only when incremental contribution and service capacity align.</p><p>Maintain a holdout and revisit assumptions after each test.</p></article></div></section><section id="model"><small>02 / SIMULATION</small><h2>Campaign allocation lab</h2><p>Illustrative assumptions, not measured campaign results. Costs and completion rates are editable.</p><div class="grid" id="inputs"></div><label>Contribution per completed audit ($)<input id="unit" type="number" min="0" value="110"></label><label>Maximum completed audits<input id="cap" type="number" min="0" value="180"></label><div class="grid" id="results" aria-live="polite"></div><button id="export">Export model JSON</button></section><section id="report"><small>03 / REPORT</small><h2>Campaign strategy presentation</h2><div class="controls"><button id="prev">Previous</button><select id="page" aria-label="PDF page"></select><button id="next">Next</button><button id="mode">Continuous view</button><a class="btn" href="docs/ChannelAtlas_Strategy.pdf" target="_blank" rel="noopener">Open PDF</a><a class="btn" href="docs/ChannelAtlas_Strategy.pdf" download>Download PDF</a></div><div id="viewer"></div></section></main><footer>ChannelAtlas · Blair Page · Independent demonstration</footer><script src="app.js"></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ChannelAtlas | Blair Page</title><link rel="icon" href="assets/mark.svg"><link rel="stylesheet" href="style.css"></head><body><header><a class="brand" href="#top"><img src="assets/mark.svg" alt="">ChannelAtlas</a><nav><a href="#strategy">Strategy</a><a href="#model">Simulator</a><a href="#report">PDF viewer</a></nav></header><main id="top"><section class="hero"><div><small>CHANNELATLAS / BY BLAIR PAGE</small><h1>Connect channels.<br><em>Measure outcomes.</em></h1><p>Multichannel advertising and performance intelligence for a fictional home energy audit service.</p><a class="btn" href="#model">Explore the model</a></div><img src="assets/hero.svg" alt="Three channels converging on a shared outcome"></section><section id="strategy"><small>01 / STRATEGY</small><h2>From discovery to completed service</h2><div class="grid"><article><h3>Campaign mandate</h3><p>Build demand for a fictional home energy audit service.</p><p>Convert qualified appointment requests into completed audits.</p><p>Measure incremental contribution rather than platform-attributed revenue.</p></article><article><h3>Audience architecture</h3><p>Prospecting: homeowners researching energy efficiency.</p><p>Retargeting: visitors who explored audit eligibility.</p><p>Search: people actively seeking local energy assessments.</p></article><article><h3>Measurement contract</h3><p>Track qualified bookings, completed audits and contribution.</p><p>Deduplicate bookings using a first-party appointment ID.</p><p>Exclude cancelled appointments from completed-audit counts.</p></article><article><h3>Baseline performance</h3><p>Illustrative spend: $12,000 across three channels.</p><p>Completed audits: 160; contribution per audit: $110.</p><p>Contribution after media: $5,600 before fixed overhead.</p></article><article><h3>Efficiency diagnostics</h3><p>Cost per qualified booking = spend / qualified bookings.</p><p>Completion rate = completed audits / qualified bookings.</p><p>Net media contribution = completed audits × unit contribution − spend.</p></article><article><h3>Creative diagnosis</h3><p>Video: explain what happens during an audit.</p><p>Search: match service intent and location.</p><p>Retargeting: address scheduling and eligibility concerns.</p></article><article><h3>Experiment design</h3><p>Randomize eligible users into mutually exclusive groups.</p><p>Compare educational video with a short service walkthrough.</p><p>Primary outcome: completed audits per eligible user.</p></article><article><h3>Retargeting test</h3><p>Use a randomized holdout to estimate incremental bookings.</p><p>Cap frequency and suppress existing appointments.</p><p>Assess incremental contribution after media cost.</p></article><article><h3>Cross-channel test</h3><p>Compare search-only against search plus educational video.</p><p>Keep geography and service availability comparable.</p><p>Use first-party outcomes rather than summed platform conversions.</p></article><article><h3>Budget architecture</h3><p>Reserve funding for high-intent search, discovery and retargeting.</p><p>Hold a separate experimental reserve.</p><p>Reallocate only after completion and contribution evidence matures.</p></article><article><h3>Forecast model</h3><p>Model bookings using channel-specific acquisition costs.</p><p>Apply completion probability and available technician capacity.</p><p>Stress-test costs, demand and contribution before scaling.</p></article><article><h3>Campaign configuration</h3><p>Search: service keywords, local radius, booking landing page.</p><p>Video: educational audiences, frequency limit, eligibility page.</p><p>Display: consented site visitors, booking exclusions, capped exposure.</p></article><article><h3>Creative concept / Search</h3><p>Headline: Understand your home energy use.</p><p>Description: Explore an independent home efficiency assessment.</p><p>CTA: Check appointment availability.</p></article><article><h3>Creative concept / Video</h3><p>Opening: A thermal scan reveals an unseen draft.</p><p>Middle: Technician explains the audit process.</p><p>Closing: Discover your next efficiency step.</p></article><article><h3>Creative concept / Display</h3><p>Headline: Ready to explore your home efficiency?</p><p>Visual: stylized house with thermal contour lines.</p><p>CTA: Explore available appointments.</p></article><article><h3>Optimization protocol</h3><p>Review booking quality and completed-audit cost weekly.</p><p>Pause misleading creative or capacity-constrained locations.</p><p>Increase spend gradually when marginal contribution remains positive.</p></article><article><h3>Experiment governance</h3><p>Pre-register primary outcome, duration and stopping rules.</p><p>Estimate sample size from baseline conversion and minimum effect.</p><p>Report uncertainty, exclusions and negative results.</p></article><article><h3>Executive decision</h3><p>Pilot the integrated mix before expanding geographically.</p><p>Scale only when incremental contribution and service capacity align.</p><p>Maintain a holdout and revisit assumptions after each test.</p></article></div></section><section id="model"><small>02 / SIMULATION</small><h2>Campaign allocation lab</h2><p>Illustrative assumptions, not measured campaign results. Costs and completion rates are editable.</p><div class="grid" id="inputs"></div><label>Contribution per completed audit ($)<input id="unit" type="number" min="0" value="110"></label><label>Maximum completed audits<input id="cap" type="number" min="0" value="180"></label><div class="grid" id="results" aria-live="polite"></div><button id="export">Export model JSON</button></section><section id="report"><small>03 / REPORT</small><h2>Campaign strategy presentation</h2><div class="controls"><button id="prev">Previous</button><select id="page" aria-label="PDF page"></select><button id="next">Next</button><button id="mode">Continuous view</button><a class="btn" href="docs/ChannelAtlas_Strategy.pdf" target="_blank" rel="noopener">Open PDF</a><a class="btn" href="docs/ChannelAtlas_Strategy.pdf" download>Download PDF</a></div><div id="viewer"></div></section></main><footer>ChannelAtlas · Blair Page · Independent demonstration</footer><script src="app.js"></script>
+<!-- PORTABLE FLOATING YOUTUBE VIDEO PLAYER -->
+<script>
+(function () {
+  const VIDEO_ID = 'dDj7DuHVV9E';
+  const MOBILE_BP = 900;
+
+  const PLAYER_ID = 'portable-video-player-2';
+  const BUTTON_ID = 'portable-video-button-2';
+  const FRAME_ID = 'portable-video-frame-2';
+  const STYLE_ID = 'portable-video-player-style-2';
+
+  function buildSrc(muted) {
+    return (
+      'https://www.youtube.com/embed/' + VIDEO_ID +
+      '?autoplay=1' +
+      '&mute=' + (muted ? '1' : '0') +
+      '&controls=1' +
+      '&loop=1' +
+      '&playlist=' + VIDEO_ID +
+      '&playsinline=1'
+    );
+  }
+
+  function clamp(value, min, max) {
+    return Math.min(Math.max(value, min), max);
+  }
+
+  function removeOld() {
+    document.getElementById(PLAYER_ID)?.remove();
+    document.getElementById(BUTTON_ID)?.remove();
+    document.getElementById(STYLE_ID)?.remove();
+  }
+
+  function injectStyle() {
+    const style = document.createElement('style');
+    style.id = STYLE_ID;
+    style.textContent = `
+      #${PLAYER_ID} {
+        position: fixed !important;
+        left: 20px !important;
+        bottom: 80px !important;
+        width: 260px !important;
+        height: auto !important;
+        aspect-ratio: 16 / 9 !important;
+        z-index: 10000 !important;
+        border-radius: 12px !important;
+        overflow: hidden !important;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.6) !important;
+        background: #000 !important;
+        touch-action: none !important;
+        display: none !important;
+      }
+
+      #${BUTTON_ID} {
+        position: fixed !important;
+        left: 20px !important;
+        bottom: 20px !important;
+        width: 52px !important;
+        height: 52px !important;
+        z-index: 10001 !important;
+        border-radius: 50% !important;
+        border: 1px solid rgba(240,239,244,0.35) !important;
+        background: rgba(58,62,59,0.72) !important;
+        color: #fff !important;
+        cursor: pointer !important;
+        font-size: 1.15rem !important;
+        font-weight: 700 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.45) !important;
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+      }
+
+      @media (max-width: 900px) {
+        #${PLAYER_ID} {
+          width: min(260px, calc(100vw - 40px)) !important;
+          max-width: calc(100vw - 24px) !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  function create() {
+    if (document.getElementById(BUTTON_ID)) return;
+
+    removeOld();
+    injectStyle();
+
+    const player = document.createElement('div');
+    player.id = PLAYER_ID;
+
+    const button = document.createElement('button');
+    button.id = BUTTON_ID;
+    button.type = 'button';
+
+    let phase = 'closed';
+    let dragging = false;
+    let startX = 0;
+    let startY = 0;
+    let originLeft = 0;
+    let originTop = 0;
+
+    function updateButtonVisual() {
+      if (phase === 'closed') {
+        button.textContent = '▶';
+        button.setAttribute('aria-label', 'Open and play video');
+        button.setAttribute('title', 'Open and play video');
+      }
+
+      if (phase === 'muted') {
+        button.textContent = '🔊';
+        button.setAttribute('aria-label', 'Unmute video');
+        button.setAttribute('title', 'Unmute video');
+      }
+
+      if (phase === 'unmuted') {
+        button.textContent = '🔇';
+        button.setAttribute('aria-label', 'Mute video');
+        button.setAttribute('title', 'Mute video');
+      }
+
+      if (phase === 'muted-ready-close') {
+        button.textContent = '✕';
+        button.setAttribute('aria-label', 'Close video');
+        button.setAttribute('title', 'Close video');
+      }
+    }
+
+    function renderIframe(muted) {
+      player.innerHTML = `
+        <iframe
+          title="Floating YouTube video"
+          style="display:block;border:0;position:absolute;inset:0;"
+          id="${FRAME_ID}"
+          width="100%"
+          height="100%"
+          src="${buildSrc(muted)}"
+          frameborder="0"
+          allow="autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+
+        <div
+          class="portable-video-drag"
+          aria-hidden="true"
+          style="
+            position:absolute;
+            top:0;
+            left:0;
+            right:0;
+            height:14px;
+            cursor:grab;
+            touch-action:none;
+            background:rgba(0,0,0,.25);
+          ">
+        </div>
+      `;
+    }
+
+    function openMuted() {
+      phase = 'muted';
+
+      player.style.setProperty('display', 'block', 'important');
+
+      if (!player.style.top || player.style.top === 'auto') {
+        player.style.setProperty('left', '20px', 'important');
+        player.style.setProperty('bottom', '78px', 'important');
+        player.style.top = 'auto';
+      }
+
+      renderIframe(true);
+      updateButtonVisual();
+
+      const rect = player.getBoundingClientRect();
+      placeButton(rect.left, rect.top);
+    }
+
+    function unmute() {
+      phase = 'unmuted';
+      player.style.setProperty('display', 'block', 'important');
+      renderIframe(false);
+      updateButtonVisual();
+    }
+
+    function muteReadyClose() {
+      phase = 'muted-ready-close';
+      player.style.setProperty('display', 'block', 'important');
+      renderIframe(true);
+      updateButtonVisual();
+    }
+
+    function closeCompletely() {
+      phase = 'closed';
+
+      player.innerHTML = '';
+      player.style.setProperty('display', 'none', 'important');
+
+      updateButtonVisual();
+
+      button.style.setProperty('left', '20px', 'important');
+      button.style.right = 'auto';
+      button.style.setProperty('bottom', '20px', 'important');
+      button.style.top = 'auto';
+    }
+
+    function placeButton(left, top) {
+      if (phase === 'closed') {
+        button.style.setProperty('left', '20px', 'important');
+        button.style.right = 'auto';
+        button.style.setProperty('bottom', '20px', 'important');
+        button.style.top = 'auto';
+        return;
+      }
+
+      const rect = player.getBoundingClientRect();
+
+      button.style.setProperty('left', left + 'px', 'important');
+      button.style.top = (top + rect.height + 8) + 'px';
+      button.style.setProperty('bottom', 'auto', 'important');
+    }
+
+    button.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (phase === 'closed') {
+        openMuted();
+        return;
+      }
+
+      if (phase === 'muted') {
+        unmute();
+        return;
+      }
+
+      if (phase === 'unmuted') {
+        muteReadyClose();
+        return;
+      }
+
+      if (phase === 'muted-ready-close') {
+        closeCompletely();
+        return;
+      }
+    });
+
+    function startDrag(x, y) {
+      if (window.innerWidth > MOBILE_BP || phase === 'closed') return;
+
+      const rect = player.getBoundingClientRect();
+
+      dragging = true;
+      startX = x;
+      startY = y;
+      originLeft = rect.left;
+      originTop = rect.top;
+    }
+
+    function moveDrag(x, y) {
+      if (!dragging) return;
+
+      const rect = player.getBoundingClientRect();
+
+      const nextLeft = clamp(
+        originLeft + (x - startX),
+        8,
+        window.innerWidth - rect.width - 8
+      );
+
+      const nextTop = clamp(
+        originTop + (y - startY),
+        8,
+        window.innerHeight - rect.height - 68
+      );
+
+      player.style.setProperty('left', nextLeft + 'px', 'important');
+      player.style.top = nextTop + 'px';
+      player.style.setProperty('bottom', 'auto', 'important');
+
+      placeButton(nextLeft, nextTop);
+    }
+
+    function endDrag() {
+      dragging = false;
+    }
+
+    player.addEventListener(
+      'touchstart',
+      e => startDrag(e.touches[0].clientX, e.touches[0].clientY),
+      { passive: true }
+    );
+
+    player.addEventListener(
+      'touchmove',
+      e => moveDrag(e.touches[0].clientX, e.touches[0].clientY),
+      { passive: true }
+    );
+
+    player.addEventListener('touchend', endDrag);
+    player.addEventListener('touchcancel', endDrag);
+
+    player.addEventListener(
+      'mousedown',
+      e => startDrag(e.clientX, e.clientY)
+    );
+
+    window.addEventListener(
+      'mousemove',
+      e => moveDrag(e.clientX, e.clientY)
+    );
+
+    window.addEventListener('mouseup', endDrag);
+
+    document.body.appendChild(player);
+    document.body.appendChild(button);
+
+    if (window.innerWidth <= MOBILE_BP) {
+      const left = 20;
+      const top = Math.max(8, window.innerHeight - 220);
+
+      player.style.setProperty('left', left + 'px', 'important');
+      player.style.top = top + 'px';
+      player.style.setProperty('bottom', 'auto', 'important');
+    }
+
+    window.addEventListener('resize', function () {
+      if (phase === 'closed') return;
+
+      const r = player.getBoundingClientRect();
+
+      const x = clamp(
+        r.left,
+        8,
+        Math.max(8, innerWidth - r.width - 8)
+      );
+
+      const y = clamp(
+        r.top,
+        8,
+        Math.max(8, innerHeight - r.height - 68)
+      );
+
+      player.style.setProperty('left', x + 'px', 'important');
+      player.style.top = y + 'px';
+      player.style.setProperty('bottom', 'auto', 'important');
+
+      placeButton(x, y);
+    });
+
+    closeCompletely();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', create);
+  } else {
+    create();
+  }
+})();
+</script>
+<!-- END PORTABLE FLOATING YOUTUBE VIDEO PLAYER -->
+</body></html>
